@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- Load the static file -->
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+        <title>Login</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'custom_css/log_reg.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}">
+        <script src="{% static 'bootstrap/js/ajax.js' %}"></script>
+    </head>
+
+    <body>
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <h3 id="form-title">LOGIN</h3>
+                    </div>
+
+                    <div class="d-flex justify-content-center form_container">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name="username" placeholder="Username..." class="form-control">
+                            </div>
+
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" name="password" placeholder="Password..." class="form-control">
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <!-- <input class="btn login_btn" type="submit" value="Create User">-->
+                                <input class="btn btn-primary btn-sm btn-block" type="submit" value="Login">
+                            </div>
+
+                            {% for message in messages %}
+                                <p class="pt-4" id="messages">{{message}}</p>
+                            {% endfor %}
+
+                            <div>
+                                <div class="d-flex justify-content-center links">
+                                    Don't have an account?
+                                    <a class="ml-2" href="{% url 'register' %}">Sign up</a>
+                                </div>
+
+                                <div class="d-flex justify-content-center links">
+                                    Forgot password?
+                                    <a class="ml-2" href="{% url 'reset_password' %}">Reset password</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

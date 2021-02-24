@@ -1,0 +1,39 @@
+<!-- Part of index.html -->
+{% extends 'index.html' %}
+
+<!-- Products Title -->
+{% block title %}
+    Products
+{% endblock %}
+
+<!-- Body -->
+{% block content %}
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Products</h5>
+            </div>
+            <div class="card card-body">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{product.name}}</td>
+                                <td>{{product.category}}</td>
+                                <td>${{product.price}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

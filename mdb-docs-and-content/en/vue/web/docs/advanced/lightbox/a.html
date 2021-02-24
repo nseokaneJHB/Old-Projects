@@ -1,0 +1,168 @@
+<!--Title-->
+<section class="mb-4">
+  <h2 class="primary-heading mb-3">Lightbox - API</h2>
+
+  <p>In this section you will find advanced information about the Lightbox component. You will learn which modules are required in this component, what are the possibilities of configuring the component, and what events and methods you can use in working with it.</p>
+
+  <hr class="mt-4 mb-5">
+
+  <!--Title-->
+  <h3 class="secondary-heading mb-3">Import statement</h3>
+
+  <!--Section: Code-->
+  <section id="import">
+    <mdbsnippet>
+
+      <code data-lang="javascript" data-name="JS">
+import { mdbLightbox } from 'mdbvue';
+      </code>
+
+    </mdbsnippet>
+  </section>
+  <!--Section: Code-->
+</section>
+
+<hr class="my-5">
+
+<!--Section: props-->
+<section id="proptypes">
+
+    <!--Title-->
+    <h2 class="section-heading mb-4">
+        API Reference: Properties
+    </h2>
+
+    <section>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th class="th-sm">Name</th>
+                <th class="th-sm">Type</th>
+                <th class="th-sm">Default</th>
+                <th class="th-sm">Description</th>
+                <th class="th-sm">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">imgs</code></td>
+                <td><i>Array</i></td>
+                <td class="text-nowrap"><code></code></td>
+                <td>An array of objects (data structure below) or strings (full-size images to open after lightbox launch - old syntax) </td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs" gallery/&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">gallery</code></td>
+                <td><i>Boolean</i></td>
+                <td class="text-nowrap"><code>false</code></td>
+                <td>If set to true, component will render a gallery of all images as well (basing on the thumbnail value)</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs" gallery/&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">columns</code></td>
+                <td><i>Number</i></td>
+                <td class="text-nowrap"><code>3</code></td>
+                <td>Changes the number of columns in the gallery</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs" gallery :columns="4"/&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">gap</code></td>
+                <td><i>Boolean</i></td>
+                <td class="text-nowrap"><code>false</code></td>
+                <td>Adds a gap between images in the gallery</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs" gallery gap/&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">imgClass</code></td>
+                <td><i>String</i></td>
+                <td class="text-nowrap"><code></code></td>
+                <td>Adds a class to the images in the gallery</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs" gallery imgClass="z-index-1"/&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">imgs</code></td>
+                <td><i>Array</i></td>
+                <td class="text-nowrap"><code>{}</code></td>
+                <td>An array of objects (data structure below ) of strings (full-size images to open after lightbox launch)</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs"/&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">index</code> (old syntax)</td>
+                <td><i>Number</i></td>
+                <td class="text-nowrap"><code>0</code></td>
+                <td>Index of element, which has to be opened</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :imgs="imgs" :index="index" /&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">visible</code> (old syntax)</td>
+                <td><i>Boolean</i></td>
+                <td class="text-nowrap"><code>false</code></td>
+                <td>Determines whether to open the lightbox</td>
+                <td><code class="language-markup">&lt;mdb-lightbox :visible=&quot;true&quot; ... /&gt;</code></td>
+            </tr>
+            <tr>
+                <td class="text-nowrap"><code class="highlighter-rouge">captions</code> (old syntax)</td>
+                <td><i>Array</i></td>
+                <td class="text-nowrap"><code></code></td>
+                <td>An array of captions corresponding to images at the same index. </td>
+                <td><code class="language-markup">&lt;mdb-lightbox :captions="['title1', 'title2']" /&gt;</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    </section>
+
+    <hr />
+
+    <h3 class="secondary-heading mb-4">
+        Data structure
+      </h3>
+      <mdbsnippet>
+        <code data-lang="javascript" data-name="steps">
+          const imgs = [
+            {
+                img: "Image's source (fullsize)",
+                thumbnail: "Image's source (minature)",
+                caption: "Image's caption"
+            }
+          ]
+        </code>
+      </mdbsnippet>
+    
+</section>
+<!--/Section: props-->
+
+<hr class="my-5">
+
+<!--Section: methods-->
+<section id="methods">
+
+    <!--Title-->
+    <h2 class="section-heading mb-4">
+        API Reference: Methods
+    </h2>
+
+    <section>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="th-sm">Name</th>
+                    <th class="th-sm">Parameters</th>
+                    <th class="th-sm">Description</th>
+                    <th class="th-sm">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code style="word-break: normal">@hide</code></td>
+                    <td><i></i></td>
+                    <td>Evokes afeter closing the lightbox</td>
+                    <td><code class="language-markup">&lt;mdb-lightbox @hide="handleHide" ... /&gt;</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+    
+</section>
+<!--/Section: methods-->

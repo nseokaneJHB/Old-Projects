@@ -1,0 +1,646 @@
+<!--Section: Intro-->
+<section id="introduction">
+
+    <!--Title-->
+    <h2 class="primary-heading">Contact Form</h2>
+
+    <h1 class="secondary-heading mb-4">MDB Vue + Laravel</h1>
+
+    <!--Description-->
+    <p class="note note-primary">Following this tutorial requires you to complete all steps from <a href="https://mdbootstrap.com/articles/vue/mdb-vue-laravel-quick-start-guide/">MDB Vue Laravel quick start guide </a> - we will be picking up exactly where previous tutorial left off.
+      <br/>
+      I assume that you successfully installed <code>composer</code> and created simple <code>Laravel</code> project with <code>MDB Vue</code>.
+    </p>
+
+    <h3 class="my-4">Tutorial in steps:</h3>
+
+    <ol class="mb-4">
+        <a href="#preparation">
+            <li>Preparation to development</li>
+        </a>
+        <a href="#form">
+            <li>Creating MDB Form</li>
+        </a>
+        <a href="#axios">
+            <li>Submitting form with axios</li>
+        </a>
+        <a href="#controller">
+            <li>Creating a controller</li>
+        </a>
+        <a href="#route">
+            <li>Adding a new route</li>
+        </a>
+        <a href="#env">
+            <li>Setting environment variables</li>
+        </a>
+        <a href="#mail">
+            <li>Sending a form</li>
+        </a>
+    </ol>
+
+</section>
+<!--/Section: Intro-->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="preparation">
+    <!--Title-->
+    <h2 class="section-heading">
+      Preparation for development
+    </h2>
+    <section>
+      <h3 class="mb-3">1. Starting a server</h3>
+      <p>Once you’ve completed all steps described in quick start guide, run following command in your command line:</p>
+      <p><code>php artisan serve</code></p>
+    <p>By default server will start on port 8000, so in your browser go to <a href="http://localhost:8000/">http://localhost:8000/</a>.</p>
+
+    <p>In separate command line window run <code>npm run watch-poll</code> - this way all your files will be updated immediately after reloading the page. </p>
+    </section>
+    <hr class="my-5">
+    <section>
+      <h3 class="mb-3">2. CSRF Token</h3>
+      <p>Now you should see <code>mdbBtn</code> rendered on your screen. In a browser console you might've noticed the following warning:</p>
+      <p class="red-text">CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token</p>
+    <p>In general, Laravel generates a CSRF (cross-site request forgery) token for each active user session and use it to verify a request’s origin. Token can be stored in a meta tag in HTML document. Open <code>resources/views/welcome.blade.php</code> directory and add the following line between <code>head</code> tags: </p>
+    <p>
+      <code data-lang="HTML">&lt;meta name="csrf-token" content="{{ csrf_token() }}"&gt;</code>
+    </p>
+
+       <!--Section: Code-->
+    <section>
+      <mdbsnippet>
+        <code data-lang="html" data-name="welcome.blade.php">
+          <!DOCTYPE html>
+            <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+              <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
+                <title>Laravel</title>
+              </head>
+              <body>
+                <div id="app">
+                  <example-component />
+                </div>
+                <script type="text/javascript" src="js/app.js"></script>
+              </body>
+            </html>
+        </code>
+      </mdbsnippet>
+    </section>
+    <!--Section: Code-->
+
+    </section>
+    <!--Description-->
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="form">
+    <!--Title-->
+    <h2 class="section-heading">
+      Creating MDB Vue Form
+    </h2>
+
+    <!--Description-->
+    <p class="mb-4">An example contact form is given below:</p>
+
+    <!--Section: Live preview-->
+    <section class="section-preview">
+
+      <!--Section: Contact v.2-->
+      <section class="mb-4">
+
+          <!--Section heading-->
+          <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+          <!--Section description-->
+          <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will get back to you within
+              a matter of hours to help you.</p>
+
+          <div class="row">
+
+              <!--Grid column-->
+              <div class="col-md-9 mb-md-0 mb-5">
+                  <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                      <!--Grid row-->
+                      <div class="row">
+
+                          <!--Grid column-->
+                          <div class="col-md-6">
+                              <div class="md-form mb-0">
+                                  <input type="text" id="name" name="name" class="form-control">
+                                  <label for="name" class="">Your name</label>
+                              </div>
+                          </div>
+                          <!--Grid column-->
+
+                          <!--Grid column-->
+                          <div class="col-md-6">
+                              <div class="md-form mb-0">
+                                  <input type="text" id="email" name="email" class="form-control">
+                                  <label for="email" class="">Your email</label>
+                              </div>
+                          </div>
+                          <!--Grid column-->
+
+                      </div>
+                      <!--Grid row-->
+
+                      <!--Grid row-->
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="md-form mb-0">
+                                  <input type="text" id="subject" name="subject" class="form-control">
+                                  <label for="subject" class="">Subject</label>
+                              </div>
+                          </div>
+                      </div>
+                      <!--Grid row-->
+
+                      <!--Grid row-->
+                      <div class="row">
+
+                          <!--Grid column-->
+                          <div class="col-md-12">
+
+                              <div class="md-form">
+                                  <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                  <label for="message">Your message</label>
+                              </div>
+
+                          </div>
+                      </div>
+                      <!--Grid row-->
+
+                  </form>
+
+                  <div class="text-center text-md-left">
+                      <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                  </div>
+                  <div id="status"></div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-3 text-center">
+                  <ul class="list-unstyled mb-0">
+                      <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                          <p>San Francisco, CA 94126, USA</p>
+                      </li>
+
+                      <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                          <p>+ 01 234 567 89</p>
+                      </li>
+
+                      <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                          <p>contact@mdbootstrap.com</p>
+                      </li>
+                  </ul>
+              </div>
+              <!--Grid column-->
+
+          </div>
+
+      </section>
+      <!--Section: Contact v.2-->
+
+    </section>
+    <!--Section: Live preview-->
+
+    <p class="mt-4">Copy and paste the following code into your file in <code>resources/js/components</code> directory (i.e. <code>ExampleComponent.vue</code>):</p>
+
+    <!--Section: Code-->
+    <section>
+      <mdbsnippet>
+        <code data-lang="html" data-name="template">
+          <template>
+            <mdb-container class="mt-5">
+              <mdb-card>
+                <mdb-card-title class="mt-4 h2">Contact us</mdb-card-title>
+                <mdb-card-body>
+                  <mdb-card-text
+                    class="pr-5 pl-5"
+                    mr-4
+                    ml-4
+                  >Do you have any questions? Please do not hesitate to contact us directly. Our team will cgetback to you within a matter of hours to help you.</mdb-card-text>
+                  <form class="needs-validation" novalidate @submit.prevent="submitForm">
+                    <mdb-row>
+                      <mdb-col md="8">
+                        <mdb-row>
+                          <mdb-col>
+                            <mdb-input label="Your name" v-model="fields.name" required />
+                          </mdb-col>
+                          <mdb-col>
+                            <mdb-input type="email" label="Your email" v-model="fields.email" required />
+                          </mdb-col>
+                        </mdb-row>
+                        <mdb-row>
+                          <mdb-col>
+                            <mdb-input label="Subject" v-model="fields.subject" required />
+                          </mdb-col>
+                        </mdb-row>
+                        <mdb-row>
+                          <mdb-col>
+                            <mdb-input
+                              type="textarea"
+                              label="Your message"
+                              v-model="fields.message"
+                              required
+                            />
+                          </mdb-col>
+                        </mdb-row>
+                      </mdb-col>
+                      <mdb-col md="4">
+                        <mdb-row>
+                          <mdb-col class="mt-4">
+                            <mdb-icon icon="map-marker-alt" size="2x" />
+                            <p>San Francisco, CA 94126, USA</p>
+                          </mdb-col>
+                        </mdb-row>
+                        <mdb-row>
+                          <mdb-col class="mt-4">
+                            <mdb-icon icon="phone" size="2x" />
+                            <p>+ 01 234 567 89</p>
+                          </mdb-col>
+                        </mdb-row>
+                        <mdb-row>
+                          <mdb-col class="mt-4">
+                            <mdb-icon icon="envelope" size="2x" />
+                            <p>contact@mdbootstrap.com</p>
+                          </mdb-col>
+                        </mdb-row>
+                      </mdb-col>
+                    </mdb-row>
+                    <mdb-btn color="primary" type="submit" class="float-left">Send</mdb-btn>
+                  </form>
+                </mdb-card-body>
+              </mdb-card>
+            </mdb-container>
+          </template>
+        </code>
+        <code data-lang="html" data-name="script">
+          <script>
+            import {
+              mdbContainer,
+              mdbInput,
+              mdbCard,
+              mdbCardHeader,
+              mdbCardTitle,
+              mdbCardText,
+              mdbCardBody,
+              mdbIcon,
+              mdbBtn,
+              mdbRow,
+              mdbCol
+            } from "mdbvue";
+
+            export default {
+              components: {
+                mdbContainer,
+                mdbInput,
+                mdbCard,
+                mdbCardHeader,
+                mdbCardTitle,
+                mdbCardBody,
+                mdbCardText,
+                mdbIcon,
+                mdbBtn,
+                mdbRow,
+                mdbCol
+              },
+              data() {
+                return {
+                  fields: {
+                    name: "",
+                    email: "",
+                    subject: "",
+                    message: ""
+                  }
+                };
+              },
+              methods: {
+                submitForm(event) {
+                  event.target.classList.add("was-validated");
+                  // submit form
+                }
+              }
+            };
+          </script>
+        </code>
+        <code data-lang="html" data-name="style">
+          <style scoped>
+            .container {
+              text-align: center;
+            }
+          </style>
+        </code>
+      </mdbsnippet>
+    </section>
+    <!--Section: Code-->
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="axios">
+    <!--Title-->
+    <h2 class="section-heading">
+      Submit form with axios
+    </h2>
+
+    <!--Description-->
+    <blockquote class="blockquote bq-danger my-4">
+      <p class="mb-4"><code>axios</code> is included in Laravel App by default, so installation is unnecessary - just import axios directly to your component file. </p>
+    </blockquote>
+
+        <!--Section: Code-->
+        <section>
+            <mdbsnippet>
+              <code data-lang="html" data-name="script">
+                <script>
+                  import axios from "axios";
+                </script>
+              </code>
+            </mdbsnippet>
+          </section>
+          <!--Section: Code-->
+
+    <p class="mt-4">Next step is to create <code>validate()</code> method preventing user from submitting an incomplete form. Once it is done we will be using <code>axios</code> to send our form to a <code>/submit</code> route.</p>
+
+    <!--Section: Code-->
+    <section>
+      <mdbsnippet>
+        <code data-lang="html" data-name="script">
+          <script>
+            import axios from "axios";
+
+            import {
+              mdbContainer,
+              mdbInput,
+              mdbCard,
+              mdbCardHeader,
+              mdbCardTitle,
+              mdbCardText,
+              mdbCardBody,
+              mdbIcon,
+              mdbBtn,
+              mdbRow,
+              mdbCol
+            } from "mdbvue";
+
+            export default {
+              components: {
+                mdbContainer,
+                mdbInput,
+                mdbCard,
+                mdbCardHeader,
+                mdbCardTitle,
+                mdbCardBody,
+                mdbCardText,
+                mdbIcon,
+                mdbBtn,
+                mdbRow,
+                mdbCol
+              },
+              data() {
+                return {
+                  fields: {
+                    name: "",
+                    email: "",
+                    subject: "",
+                    message: ""
+                  }
+                };
+              },
+              methods: {
+                validate() {
+                  const form = [...arguments];
+                  const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                  for (let index in form) {
+                    let field = form[index];
+                    if (field === "email" && !emailRegexp.test(this.fields[field])) {
+                      return false;
+                    } else if (this.fields[field] === "") {
+                      return false;
+                    }
+                  }
+                  return true;
+                },
+                submitForm(event) {
+                  event.target.classList.add("was-validated");
+                  if (this.validate("email", "name", "message", "subject")) {
+                    axios
+                      .post("/submit", this.fields)
+                      .then(response => {
+                        alert("Message sent!");
+                        this.fields = {};
+                        event.target.classList.remove("was-validated");
+                      })
+                      .catch(error => {
+                        console.log(error);
+                      });
+                  }
+                }
+              }
+            };
+          </script>
+        </code>
+      </mdbsnippet>
+    </section>
+    <!--Section: Code-->
+
+  <p>Once the message is successfully sent, we will alert the user and clear the form's inputs with <code>this.fields = {};</code> line.</p>
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="controller">
+    <!--Title-->
+    <h2 class="section-heading">
+      Create a Controller
+    </h2>
+
+    <!--Description-->
+    <p>In your command line run following command: </p>
+    <p><code>php artisan make:controller FormController</code></p>
+    <p>This will create a <code>FormController.php</code> file in <code>app/Http/Controllers</code> directory.</p>
+    <p>In the <code>FormController</code> class create public <code>submit</code> function and validate data from a request as shown below:</p>
+
+    <!--Section: Code-->
+    <section>
+        <mdbsnippet>
+          <code data-lang="php" data-name="FormController">
+            <?php
+
+            namespace App\Http\Controllers;
+            
+            use Illuminate\Http\Request;
+            
+            class FormController extends Controller
+            {
+              public function submit(Request $request) {
+                $this->validate($request, [
+                  'name' => 'required|string',
+                  'email' => 'required|email',
+                  'message' => 'required',
+                  'subject' => 'required'
+                ]);
+                /*
+                  Mail functionality
+                
+                */
+                return response()->json(null, 200);
+              }
+            }
+              
+          </code>
+        </mdbsnippet>
+      </section>
+      <!--Section: Code-->
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="route">
+  <!--Title-->
+  <h2 class="section-heading">
+    Add a Route
+  </h2>
+
+  <!--Description-->
+  <p>To run a <code>submit</code> function from <code>FormController</code> on <code>post</code> request to <code>/submit</code>, we need to define a new route in the <code>routes/web.php</code> file:</p>
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="php" data-name="controller">
+        <?php
+
+        /*
+        |--------------------------------------------------------------------------
+        | Web Routes
+        |--------------------------------------------------------------------------
+        |
+        | Here is where you can register web routes for your application. These
+        | routes are loaded by the RouteServiceProvider within a group which
+        | contains the "web" middleware group. Now create something great!
+        |
+        */
+
+        Route::get('/', function () {
+          return view('welcome');
+        });
+
+        Route::post('/submit', 'FormController@submit');
+          
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--Section: Code-->
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="env">
+    <!--Title-->
+    <h2 class="section-heading">
+      Set environment variables
+    </h2>
+
+    <!--Description-->
+    <p>Laravel uses SwiftMailer library for sending emails - if you're interested in exploring more options, see <a href="https://laravel.com/docs/5.8/mail">offical documentation</a>. To get started with sending emails, you need to connect the Laravel App with your Gmail account. Open <code>.env</code> file and set the following environment variables: </p>
+
+    <!--Section: Code-->
+    <section>
+        <mdbsnippet>
+          <code data-lang="env" data-name="environment variables">
+              MAIL_DRIVER =smtp
+              MAIL_HOST =smtp.gmail.com
+              MAIL_PORT =587
+              MAIL_USERNAME=YOUR_GMAIL_USERNAME
+              MAIL_PASSWORD=YOUR_GMAIL_PASSWORD
+              MAIL_ENCRYPTION=tls
+          </code>
+        </mdbsnippet>
+      </section>
+      <!--Section: Code-->
+
+    <blockquote class="blockquote bq-danger my-4">
+      <p class="bq-title">Note!</p>
+      <p>By default Gmail will block all attempts to send emails from unsafe apps - solving this issue requires opening Gmail settings and allowing access for less safe applications.</p>
+    </blockquote>
+
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="mail">
+  <!--Title-->
+  <h2 class="section-heading">
+    Sending email
+  </h2>
+
+  <!--Description-->
+  <p>Let's go back to our <code>FormController.php</code> file and complete the last step - defining email-sending functionality.</p>
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="php" data-name="FormController">
+      <?php
+        namespace App\Http\Controllers;
+
+        use Illuminate\Http\Request;
+        use Mail;
+
+        use App\Http\Requests;
+        use App\Http\Controllers\Controller;
+
+        class FormController extends Controller
+        {
+          public function submit(Request $request) {
+            $this->validate($request, [
+                'name' => 'required|string',
+                'email' => 'required|email',
+                'message' => 'required',
+                'subject' => 'required'
+            ]);
+            $name=$request['name'];
+            $email=$request['email'];
+            $title=$request['subject'];
+            $message=$request['message'];
+
+            $data = array('name'=>"Virat Gandhi");
+      
+            Mail::raw($message, function($message) use ($title, $name, $email){
+                $message->to(YOUR_EMAIL, YOUR_NAME)->subject
+                    ($title);
+                $message->from($email, $name);
+            });
+            echo "Your email has been send!";
+
+            return response()->json(null, 200);
+          }
+        }
+      </code>
+    </mdbsnippet>
+  </section>
+  
+  <p>In code above replace <code>YOUR_EMAIL</code> and <code>YOUR_NAME</code> with your data. </p>
+  <p>Now you can go back to your application and try sending an email. Explore and modify the form and logic according to your needs.</p>
+  <p>Happy coding!</p>
+</section>
+<!--/Section: -->

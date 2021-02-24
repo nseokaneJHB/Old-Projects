@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>Web Portfolio of Nolan Seokane</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!--The outer nav element with navbar as class creates the bar at the top of the page. A nav element is the same as a div except that we give a hint to seach engines that this is a navigation.-->
+        <div class="container">
+            <!--The next div with the class container is responsible for the left and right margins to aligns the navigation in the same way as the content of our website. Note always the corresponding closing </div> tag-->
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--The button element with the class navbar-toggler is the button on the mobile view to expand the menu. To test this make the browser window small.-->
+            <div class="collapse navbar-collapse append-pic" id="navbarMenu">
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link" href="/about/indexAbout.html" title="Go to about"><img class="d-block mx-auto rounded-circle smaller-image" src="/img/suit.jpg" alt="Profile Picture"></a>
+                    </li>
+                    <li><a class="nav-link active" href="/" title="Go to Home">Home</a></li>
+                    <li><a class=" nav-link " href="/gallery/indexGal.html" title="Go to gallery">Gallery</a>
+                    </li>
+                    <li><a class="nav-link" href="/blog/indexblog.html" title="Go to blog">Blog</a></li>
+                    <li><a class=" nav-link " href="/projects/indexPro.html" title="Go to projects">Projects</a>
+                    </li>
+                    <li><a class="nav-link" href="#footer" title="Go to contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="title text-center"><strong>Web Portfolio of Nolan Seokane</strong>
+        </h1>
+        <h2 class="text-center">
+            <strong>Welcome!</strong>
+        </h2>
+        <!--<script>
+            document.getElementById("demo ").innerHTML = "Welcome ";
+        </script>-->
+
+        <!--Two Column Layout-->
+        <div class="row ">
+            <div class="col-sm-4 ">
+                <img class="d-block mx-auto " src="img/Cartoon.jpeg " alt="Cartoon Nolan Seokane x Skater Nation ">
+                <!-- use float for aligning the pictures-->
+            </div>
+            <div class="col-sm-8 ">
+                <p>Thanks for stopping by.</p>
+                <p>Please have a look around. In the blog section I document my experiences in programming. You may also look at my web projects. Have Fun.</p>
+            </div>
+        </div>
+        <hr>
+
+
+    </div>
+
+</body>
+<footer id="footer">
+    <div class="container footer-color ">
+        <hr>
+        <h1 class="title text-center "><strong>Contact</strong></h1>
+        <div class="row ">
+            <div class="col-sm-6 ">
+                <p>
+                    You can contact me by email: <a href="Nolan:kgotsonolan@gmail.com ">kgotsonolan@gmail.com</a>
+                </p>
+
+                <p>
+                    Nolan Seokane<br> South Africa
+                </p>
+            </div>
+            <div class="col-sm-6 vl">
+                <div style="margin: 2vw">
+                    <h4><strong>Social: </strong></h4>
+                    <a href="https://za.linkedin.com/in/nolan-seokane-6467a312a "><img class="smaller-image " src="/img/linkedin.svg " alt="My LinkedIn profile "></a>
+                    <a href="https://www.instagram.com/nolan__kgotso/ "><img class="smaller-image " src="/img/instagram.svg " alt="Instagram "></a>
+                    <a href="https://www.facebook.com/kgotso.nolan.9 "><img class="smaller-image " src="/img/facebook.svg " alt="facebook "></a>
+                    <a href="https://twitter.com/nolan__kgotso "><img class="smaller-image " src="/img/twitter.svg " alt="twitter "></a>
+                    <!--<img class="smaller-image " src="/img/youtube.svg " alt="YouTube ">-->
+                </div>
+            </div>
+        </div>
+
+        <!--Defines a page for google search engine-->
+        <meta charset="UTF-8">
+        <meta name="description" content="My online profile">
+        <meta name="keywords" content="skate, skater, skateboard, skateboarding, nolan, kgotso, seokane, braamfischer, meadowlands">
+        <meta name="author" content="Nolan Kgotso Seokane">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <!--To use icons-->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js "></script>
+
+</footer>
+
+</html>

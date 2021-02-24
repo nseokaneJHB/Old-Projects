@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/src/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/custom/css/something.css">
+    <link rel="stylesheet" href="/src/fontawesome/css/all.css">
+    <script src="/src/bootstrap/js/maxcdn.js"></script>
+    <script src="/src/bootstrap/js/ajax.js"></script>
+    <script src="/src/bootstrap/js/stackpath.js"></script>
+
+    <title>Web Portfolio of Nolan Seokane - Statistics form</title>
+
+    <link rel="icon" type="image/png" href="/src/img/icon.png">
+</head>
+
+<body>
+    <header class="container">
+        <!--Menu Navigation bar-->
+        <div class="fixed-top">
+            <nav class="navbar navbar-expand-md navbar-light mb-3">
+                <div class="container-fluid">
+                    <a class="nav-link text-center text-white" href="/index.html" title="Home"><i class="fas fa-home">&nbsp;<strong>Home</strong></i></a>
+                    <button type="button" class="navbar-toggler" style="width: 55px;" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-center text-white" href="/main/gallery/index.html" title="Gallery"><i class="fas fa-photo-video">&nbsp;<strong>Galley</strong></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center text-white" href="/main/projects/index.html" title="Projects"><i class="fas fa-chart-line">&nbsp;<strong>Projects</strong></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center text-white" href="/main/contact/index.html" title="Contact Me"><i class="fas fa-address-card">&nbsp;<strong>Contact Me</strong></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <div class="container pt-5">
+        <h1 class="title text-center">
+            <strong>Complete this form for statistics purposes</strong>
+        </h1>
+    </div>
+
+    <div class="container con">
+        <div class="contain">
+            <div class="container mt-3 ml-1">
+                <div class="text-center" style="color: red; font-weight: bolder; font-size: 15px; font-family: 'Courier New', Courier, monospace;">
+                    <p>Fields with a '*' are required to be filled</p>
+                </div>
+                <form class="container" name="myForm" autocomplete="on" action="./makeComment/index.php" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>Person: </strong></span>
+                        </div>
+                        <input class="form-control" type="text" name="fullname" placeholder="*First name and last name" autofocus>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>Email: </strong></span>
+                        </div>
+                        <input class="form-control" type="email" name="email" placeholder="*example@email.com">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>Phone number: </strong></span>
+                        </div>
+                        <input class="form-control" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="*074-415-0678">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>Date of birth: </strong></span>
+                        </div>
+                        <input class="dob form-control" type="date" name="uDOB">
+                    </div>
+
+                    <div class="mt-3 mb-3">
+                        <div class="text-center">
+                            <label><strong>*Gender</strong></label>
+                        </div>
+                        <div class="text-center">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="rMale" class="custom-control-input" name="gender" value="Male">
+                                <label class="custom-control-label" for="rMale">Male</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="rFemale" class="custom-control-input" name="gender" value="Female">
+                                <label class="custom-control-label" for="rFemale">Female</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="rOther" class="custom-control-input" name="gender" value="Other">
+                                <label class="custom-control-label" for="rOther">Other</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="rPrefer" class="custom-control-input" name="gender" value="Prefer not to say">
+                                <label class="custom-control-label" for="rPrefer">Prefer not to say</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container text-center mb-3">
+                        <label><strong>*Continent</strong></label>
+                        <select class="custom-select text-center" style="color:black; margin-left: auto;margin-right: auto;" type="text" name="continent">
+                            <option value="south africa" selected>Africa</option>
+                            <option value="asia">Asia</option>
+                            <option value="australia">Australia</option>
+                            <option value="europe">Europe</option>
+                            <option value="north america">North America</option>
+                            <option value="south america">South America</option>
+                        </select>
+                    </div>
+
+                    <div class="container text-center">
+                        <label><strong>*Occupation</strong></label>
+                        <span id="msgOcc" class="text-center mAlert"></span>
+                        <select class="custom-select text-center" style="color:black; margin-left: auto;margin-right: auto;" type="text" name="occupation">
+                            <option value="Student" selected>Student</option>
+                            <option value="Employed">Employed</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Learner">Learner</option>
+                        </select>
+                    </div>
+
+                    <div class="container mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-sm">
+                                <button class="btn btn-primary mb-3" type="submit" name="submit"><strong>Submit</strong></button>
+                            </div>
+                            <div class="col-sm">
+                                <button class="btn btn-primary" type="reset" name="reset"><strong>Clear Form</strong></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <aside>
+        <div id="mySidenav" class="sidelink">
+            <a href="mailto:216144035@edu.vut.ac.za" title="Email me"><i class="fas fa-at"></i></a>
+            <a href="https://github.com/NolanKgotso/" title="Github"><i class="fab fa-github"></i></a>
+            <a href="#" title="Live website"><i class="fas fa-globe-africa"></i></a>
+            <a href="https://za.linkedin.com/in/nolan-seokane-6467a312a" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/nolan__kgotso/" title="instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </aside>
+    <footer>
+        <div class="container text-center">
+            <p class="pt-2"><strong>©<br>Nolan Seokane<br>Project in progress</strong></p>
+            <p>This project was started in November 2019 by Nolan Seokane</p>
+        </div>
+    </footer>
+    <script src="/src/js/formValidation.js"></script>
+    <script src="/src/js/intlTelInput.js"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            utilsScript: "/src/js/utils.js",
+        });
+    </script>
+</body>
+
+</html>

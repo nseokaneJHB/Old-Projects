@@ -1,0 +1,134 @@
+<script src="<?php echo get_template_directory_uri() ?>/js/mdbEditor.min.js"></script>
+<script>
+  $('#dtBasicExample').mdbEditor();
+  $('#dtBasicExample-1').mdbEditorRow();
+
+</script>
+<script>
+  $('.dataTables_length').addClass('bs-select');
+
+</script>
+
+<script>
+
+  const $myForm = $('#myForm');
+
+  $('#chat').on('click', function () {
+
+    if ($myForm.hasClass('slim') || !$myForm.is(':visible')) {
+
+      $myForm.css('display', 'block');
+      $myForm.removeClass('slim');
+    };
+  })
+
+  $('#closeButton').not('#toggle').on('click', function () {
+
+    $myForm.hide();
+  })
+
+  $("#toggle").on('click', function () {
+
+    $myForm.toggleClass('slim');
+  });
+
+  $("#exampleForm2").on("keypress", function(e) {
+    const $eTargetVal = $(e.target).val();
+    
+    if (e.keyCode === 13 && $eTargetVal.length > 0) {
+      const text = 
+      `<div class="card bg-primary rounded w-75 float-right z-depth-0 mb-1 last">
+        <div class="card-body p-2">
+          <p class="card-text text-white">${$eTargetVal}</p>
+        </div>
+      </div>`;
+
+      $(text).insertAfter(".last:last");
+      $(this).val("");
+    }
+  });
+
+  function getMessages(letter) {
+    var div = $("#message");
+    div.scrollTop(div.prop('scrollHeight'));
+  }
+
+  $(function() {
+    getMessages();
+  });
+</script>
+
+
+<!-- Structured data: Breadcrumbs -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mdbootstrap.com/",
+        "name": "MDBootstrap",
+        "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg"
+      }
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://mdbootstrap.com/plugins/",
+        "name": "MD Bootstrap Plugins",
+        "image": "https://mdbootstrap.com/wp-content/uploads/2018/11/mdb-jquery-free.jpg"
+      }
+    }, {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://mdbootstrap.com/plugins/jquery/",
+        "name": "MD Bootstrap Plugins jQuery",
+        "image": "https://mdbootstrap.com/img/Marketing/docs/social/main-addons.jpg"
+      }
+    }, {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "https://mdbootstrap.com/plugins/jquery/chat/",
+        "name": "MD Bootstrap Chat",
+        "image": "https://mdbootstrap.com/img/Marketing/docs/social/chat.jpg"
+      }
+    }]
+  }
+
+</script>
+
+<!-- Structured data: Article -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mdbootstrap.com/plugins/jquery/chat/"
+    },
+    "headline": "Bootstrap Chat - examples & tutorial. Basic & advanced usage",
+    "image": [
+      "https://mdbootstrap.com/img/Marketing/docs/social/chat.jpg"
+    ],
+    "datePublished": "2018-06-25T08:00:00+08:00",
+    "dateModified": "2018-06-25T09:20:00+08:00",
+    "author": {
+      "@type": "Organization",
+      "name": "MDBootstrap"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MDBootstrap",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png"
+      }
+    },
+    "description": "Bootstrap chat is a component dedicated for text-based communication between two or more users in real time. Build with conversations list sidebar."
+  }
+
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Load the static file -->
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+        <title>Online Store - {% block title %} {% endblock %}</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'custom_css/online_store.css' %}">
+    </head>
+
+    <body>
+        <header class="sticky-top">
+            {% include 'navbar.html' %}
+        </header>
+        <hr>
+        <div id="body_content">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        <hr>
+        <footer>
+            {% include 'footer.html' %}
+        </footer>
+
+        <!-- <script rel="script" src="{% static 'bootstrap/js/maxcdn.js' %}"></script> -->
+        <script rel="script" src="{% static 'bootstrap/js/ajax.js' %}"></script>
+        <script rel="script" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

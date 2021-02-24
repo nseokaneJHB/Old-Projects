@@ -1,0 +1,28 @@
+<!-- Inherit from index -->
+<!--{% extends 'index.html' %}-->
+<!-- Load the static files -->
+<!--{% load static %}-->
+
+<!-- Home Title -->
+{% block title %}
+    Order
+{% endblock %}
+
+<!-- Body -->
+{% block content %}
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-header">
+                <h5>Order: <u><em>{{order.product.name}}</em></u></h5>
+            </div>
+            <div class="card card-body">
+                <form method="POST" action="">
+                    {% csrf_token %}
+
+                        {{form.as_p}}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

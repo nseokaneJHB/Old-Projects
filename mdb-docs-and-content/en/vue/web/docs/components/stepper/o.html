@@ -1,0 +1,1072 @@
+<!--Section: Intro-->
+<section id="introduction">
+
+  <!--Title-->
+  <h2 class="primary-heading">Vue Bootstrap Stepper</h2>
+
+  <h1 class="secondary-heading mb-4">Vue Stepper - Bootstrap 4 & Material Design</h1>
+
+  <!--Description-->
+  <p>Vue Bootstrap stepper is a component that displays content as a process with defined by user milestones. Following steps are separated and connected by buttons.</p>
+  
+  <p>This is a great solution for a variety of registration forms, where you don't want to scare the user with loads of fields and questions.</p>
+  
+  <p>All Steppers (apart from within version) can be aligned vertically as well as horizontally.</p>
+
+  <p class="note note-danger">This documentation may contain syntax introduced in the <strong>MDB Vue 6.0.0</strong> and can be not compatible with previous versions. See legacy <a href="https://mdbootstrap.com/legacy/vue/5.8.3/">docs</a>.</p>
+
+  <a
+    href="https://mdbootstrap.com/previews/templates/vue/#/components/stepper"
+    target="_blank"
+    class="btn btn-info mt-4 btn-rounded"
+    role="button"
+    >Vue live preview
+    <i class="fas fa-eye ml-2"></i>
+  </a>
+
+  <a
+    href="https://mdbootstrap.com/previews/templates/vue/#/components/pro/stepper"
+    target="_blank"
+    class="btn btn-outline-info mt-4 btn-rounded"
+    role="button"
+    >Vue live preview (PRO)
+    <i class="fas fa-gem ml-2"></i>
+  </a>
+
+</section>
+<!--/Section: Intro-->
+
+<hr class="my-5">
+
+<!--Section: Simple v-->
+
+<section id="simple-v">
+
+  <!--Title-->
+  <h2 class="section-heading"><strong>Simple Vertical Stepper</strong></h2>
+
+  <!--Description-->
+
+  <p>In the MDB Vue Free Package stepper has value of <code>SimpleV</code> the property set to <code>true</code> by default, although it is still recommended to add this property to avoid code changes in case of an upgrade.</p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="simple-v-stepper"><simple-v/></div>
+  </section>
+  <!--Section: Live preview-->
+    
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+            <mdb-stepper simpleV :steps="verticalStepper" v-model="currentStep"/>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import { mdbStepper } from 'mdbvue';
+          export default {
+            components: {
+              mdbStepper,
+            },
+            data() {
+              return {
+                currentStep: 2,
+                verticalStepper: [
+                  {
+                    content:
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere iusto quaerat vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore nostrum ut, nobis porro sapiente."
+                  },
+                  {
+                    content:
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere iusto quaerat vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore nostrum ut, nobis porro sapiente."
+                  },
+                  {
+                    content:
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere iusto quaerat vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore nostrum ut, nobis porro sapiente."
+                  }
+                ],
+              };
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+
+</section>
+
+<!--Section: Simple v-->
+
+<hr class="my-5">
+
+<!--Section: Simple H -->
+
+<section id="simple-h">
+
+  <!--Title-->
+  <h2 class="section-heading"><strong>Simple Horizontal Stepper</strong></h2>
+
+  <!--Description-->
+
+  <p>To change Stepper's orientation to horizontal, add <code>SimpleH</code> property.</p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="simple-h-stepper"><simple-h></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+            <mdb-stepper simpleH :steps="steps"/>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import { mdbStepper } from 'mdbvue';
+          export default {
+            components: {
+              mdbStepper,
+            },
+            data() {
+              return {
+                steps: [
+                  {
+                    content:
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere iusto quaerat vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore nostrum ut, nobis porro sapiente."
+                  },
+                  {
+                    content:
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere iusto quaerat vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore nostrum ut, nobis porro sapiente."
+                  },
+                  {
+                    content:
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere iusto quaerat vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore nostrum ut, nobis porro sapiente."
+                  }
+                ],
+              };
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+
+</section>
+
+<!--Section: Simple H-->
+
+<hr class="my-5">
+
+<!--Section: Simple V PRO-->
+
+<section id="simple-v-pro">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Simple Vertical Stepper</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">In MDB Vue Pro version in order to use Simple vertical stepper, set <code>SimpleV</code> property to <code>true</code>. You can customize your stepper further - to view the list of all available props and events, visit the API tab.</p>
+
+  <!--Section: Live preview-->
+  <section>
+      <div id="simple-v-pro-stepper"><simple-v-pro /></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper simpleV :steps="4">
+            <template #1>
+              <form>
+                <mdb-input label="name"/>
+              </form>
+            </template>
+            <template #2>
+              <form>
+                <mdb-input label="email" type="email"/>
+              </form>
+            </template>
+            <template #3>
+              <form>
+                <mdb-input label="message" type="textarea" :rows="4"/>
+              </form>
+            </template>
+              <template #4>
+              <p>Finish!</p>
+            </template>
+          </mdb-stepper>
+      </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import { mdbStepper, mdbInput } from 'mdbvue';
+          export default {
+            components: {
+              mdbStepper, mdbInput
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Simple V PRO-->
+
+<hr class="my-5">
+
+<!--Section: Simple V Buttons-->
+
+<section id="simple-buttons">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Simple Vertical Stepper - Buttons</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">To display Next/Previous/Submit buttons, set property <code>buttons</code> to <code>true</code>
+  </p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+      <div id="simple-v-buttons"><simple-v-buttons /></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper simpleV :steps="4" buttons>
+            <template #1>
+              <form>
+                <mdb-input label="name"/>
+              </form>
+            </template>
+            <template #2>
+              <form>
+                <mdb-input label="email" type="email"/>
+              </form>
+            </template>
+            <template #3>
+              <form>
+                <mdb-input label="message" type="textarea" :rows="4"/>
+              </form>
+            </template>
+              <template #4>
+              <p>Finish!</p>
+            </template>
+          </mdb-stepper>
+      </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import { mdbStepper, mdbInput } from 'mdbvue';
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Simple V Buttons-->
+
+<hr class="my-5">
+
+<!--Section: Simple V Linear-->
+
+<section id="simple-v-linear">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Simple Vertical Stepper - Linear</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">To prevent the user from going more than one step ahead, add the prop <code>linear</code> to your stepper.
+  </p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="simple-v-linear"><simple-v-linear></simple-v-linear></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper simpleV :steps="4" linear>
+            <template #1>
+              <form>
+                <mdb-input label="name"/>
+              </form>
+            </template>
+            <template #2>
+              <form>
+                <mdb-input label="email" type="email"/>
+              </form>
+            </template>
+            <template #3>
+              <form>
+                <mdb-input label="message" type="textarea" :rows="4"/>
+              </form>
+            </template>
+              <template #4>
+              <p>Finish!</p>
+            </template>
+          </mdb-stepper>
+      </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import { mdbStepper, mdbInput } from 'mdbvue';
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Simple V Linear-->
+
+<hr class="my-5">
+
+<!--Section: Simple V Validation-->
+
+<section id="simple-v-validation">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Simple Vertical Stepper - Validation</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">In order to validate a step before allowing user to go to the next one, add the following properties to your stepper: <code>validation</code> and <code>validatedSteps</code>. User will be able to access only steps which corresponding keys in the <code>validatedSteps</code> object have the value set to <code>true</code>. Every time user attempts to change a step, <code>@validate</code> event will be emitted - it's handler should evaluate the current step and change its value in the <code>validatedSteps</code> prop.
+  </p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+      <div id="simple-v-validation"><simple-v-validation></simple-v-validation></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+            <mdb-stepper
+            simpleV
+            :steps="3"
+            buttons
+            validation
+            :validatedSteps="validatedSteps"
+            @validate="validate"
+            @submit="submit"
+          >
+            <template #1>
+              <form ref="vertical1">
+                <mdb-input label="name" v-model="name" required />
+              </form>
+            </template>
+            <template #2>
+              <form ref="vertical2">
+                <mdb-input label="surname" v-model="surname" required />
+              </form>
+            </template>
+            <template #3>
+              <p>Finish!</p>
+            </template>
+          </mdb-stepper>
+      </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import {
+            mdbStepper,
+            mdbInput
+          } from "mdbvue";
+
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput
+            },
+            data() {
+              return {
+                name: "",
+                surname: "",
+                validatedSteps: {}
+              };
+            },
+            methods: {
+              validate(step) {
+                this.$refs[`vertical${step}`].classList.add("was-validated");
+
+                if (step === 1 && this.name.length > 0)
+
+                  this.validatedSteps[1] = true;
+
+                else if (step === 2 && this.surname.length > 0)
+                  this.validatedSteps[2] = true;
+              },
+              submit() {
+                console.log(`${this.name} has submitted the form.s`);
+              }
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Simple V Validation-->
+
+<hr class="my-5">
+
+<!--Section: Simple H PRO-->
+
+<section id="simple-h-pro">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Simple Horizontal Stepper</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">To change Stepper's orientation to vertical, add <code>SimpleV</code> property.</p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="simple-h-pro-stepper"><simple-h-pro></simple-h-pro></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper simpleH :steps="4">
+            <template #1>
+              <form>
+                <mdb-input label="name"/>
+              </form>
+            </template>
+            <template #2>
+              <form>
+                <mdb-input label="email" type="email"/>
+              </form>
+            </template>
+            <template #3>
+              <form>
+                <mdb-input label="message" type="textarea" :rows="4"/>
+              </form>
+            </template>
+              <template #4>
+              <p>Finish!</p>
+            </template>
+          </mdb-stepper>
+      </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import { mdbStepper, mdbInput } from 'mdbvue';
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Simple H PRO-->
+
+<hr class="my-5">
+
+<!--Section: Horizontal Stepper-->
+
+<section id="horizontal">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Horizontal Stepper</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">To display icons in step buttons, pass an array to the <code>steps</code> property and specify an icon for each step.</p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="horizontal-stepper"><horizontal-stepper></horizontal-stepper></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper buttons :steps="registrationStepper" @submit="submit">
+            <template #1>
+              <h3 class="font-weight-bold pl-0 my-4">
+                <strong>Basic Information</strong>
+              </h3>
+              <mdb-input label="Email" />
+              <mdb-input label="Username" />
+              <mdb-input label="Password" />
+              <mdb-input label="Repeat Password" />
+            </template>
+            <template #2>
+              <h3 class="font-weight-bold pl-0 my-4">
+                <strong>Personal Data</strong>
+              </h3>
+              <mdb-input label="First Name" />
+              <mdb-input label="Second Name" />
+              <mdb-input label="Surname" />
+              <mdb-input type="textarea" label="Address" />
+            </template>
+            <template #3>
+              <h3 class="font-weight-bold pl-0 m-4">
+                <strong>Terms and conditions</strong>
+              </h3>
+              <mdb-input
+                type="checkbox"
+                id="checkbox1"
+                label="I agree to the terms and conditions"
+              />
+              <mdb-input
+                class="mb-5"
+                type="checkbox"
+                id="checkbox2"
+                label="I want to receive newsletter"
+              />
+            </template>
+            <template #4>
+              <h3 class="font-weight-bold pl-0 my-4">
+                <strong>Finish</strong>
+              </h3>
+              <h2 class="text-center font-weight-bold my-4">Registration completed!</h2>
+            </template>
+          </mdb-stepper>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import {
+            mdbStepper,
+            mdbInput
+          } from "mdbvue";
+
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput,
+            },
+            data() {
+              return {
+                registrationStep: 2,
+                registrationStepper: [
+                  { icon: "folder", far: true, name: "Basic Information" },
+                  { icon: "pencil-alt", name: "Personal Data" },
+                  { icon: "image", far: true, name: "Terms and Conditions" },
+                  { icon: "check", name: "Finish" }
+                ],
+              }
+            },
+            methods: {
+              submit() {
+                console.log('submitted');
+              }
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Horizontal Stepper-->
+
+<hr class="my-5">
+
+<!--Section: Color variations-->
+
+<section id="color-variations">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Horizontal Stepper - color variations</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">You can control the stepper's appearance with <code>options</code> property. Visit the API tab to explore all available settings.</p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="colorful-stepper"><colorful-stepper></colorful-stepper></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper buttons :steps="registrationStepper" @submit="submit" :options="options">
+            <template #1>
+              <h3 class="font-weight-bold pl-0 my-4">
+                <strong>Basic Information</strong>
+              </h3>
+              <mdb-input label="Email" />
+              <mdb-input label="Username" />
+              <mdb-input label="Password" />
+              <mdb-input label="Repeat Password" />
+            </template>
+            <template #2>
+              <h3 class="font-weight-bold pl-0 my-4">
+                <strong>Personal Data</strong>
+              </h3>
+              <mdb-input label="First Name" />
+              <mdb-input label="Second Name" />
+              <mdb-input label="Surname" />
+              <mdb-input type="textarea" label="Address" />
+            </template>
+            <template #3>
+              <h3 class="font-weight-bold pl-0 m-4">
+                <strong>Terms and conditions</strong>
+              </h3>
+              <mdb-input
+                type="checkbox"
+                id="checkbox1"
+                label="I agree to the terms and conditions"
+              />
+              <mdb-input
+                class="mb-5"
+                type="checkbox"
+                id="checkbox2"
+                label="I want to receive newsletter"
+              />
+            </template>
+            <template #4>
+              <h3 class="font-weight-bold pl-0 my-4">
+                <strong>Finish</strong>
+              </h3>
+              <h2 class="text-center font-weight-bold my-4">Registration completed!</h2>
+            </template>
+          </mdb-stepper>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import {
+            mdbStepper,
+            mdbInput
+          } from "mdbvue";
+
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput,
+            },
+            data() {
+              return {
+                registrationStep: 2,
+                registrationStepper: [
+                  { icon: "folder", far: true, name: "Basic Information" },
+                  { icon: "pencil-alt", name: "Personal Data" },
+                  { icon: "image", far: true, name: "Terms and Conditions" },
+                  { icon: "check", name: "Finish" }
+                ],
+                options: {
+                  stepBtn: { color: "info", active: "amber", iconClass: "white-text" },
+                  nextBtn: { outline: "info", icon: "chevron-right" },
+                  prevBtn: { outline: "info", icon: "chevron-left" },
+                  submitBtn: { color: "amber", icon: "check" },
+                  lineColor: "amber"
+                },
+              }
+            },
+            methods: {
+              submit() {
+                console.log('submitted');
+              }
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Color variations-->
+
+<hr class="my-5">
+
+<!--Section: Horizontal Validation-->
+
+<section id="horizontal-validation">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Horizontal Stepper - validation</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description"></p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="validation-stepper"><validation-stepper></validation-stepper></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-stepper
+            class="pt-5"
+            buttons
+            validation
+            :validatedSteps="validatedSteps"
+            @validate="validate"
+            @submit="submit"
+            :steps="validationStepper"
+            :options="validationOptions"
+          >
+            <template #1>
+              <h3 class="font-weight-bold pt-3 pl-0 my-4">
+                <h2>Personal Information</h2>
+              </h3>
+              <form ref="form1">
+                <mdb-input required label="First Name" v-model="form[0].name" />
+                <mdb-input required label="Second Name" v-model="form[0].surname" />
+                <mdb-input required label="Address" v-model="form[0].address" />
+              </form>
+            </template>
+            <template #2>
+              <h3 class="font-weight-bold pt-3 pl-0 my-4">
+                <h2>Company Information</h2>
+              </h3>
+              <form ref="form2">
+                <mdb-input required label="Company Name" v-model="form[1].company" />
+                <mdb-input required label="Company Address" v-model="form[1].address" />
+              </form>
+            </template>
+            <template #3>
+              <h3 class="font-weight-bold pt-3 pl-0 my-4">
+                <h2>Terms and conditions</h2>
+              </h3>
+              <form ref="form3">
+                <mdb-input
+                  type="checkbox"
+                  id="checkbox3"
+                  required
+                  v-model="form[2].condition"
+                  label="I agree to the terms and conditions"
+                />
+                <mdb-input type="checkbox" id="checkbox4" label="I want to receive newsletter" />
+              </form>
+            </template>
+          </mdb-stepper>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import {
+            mdbStepper,
+            mdbInput,
+          } from "mdbvue";
+
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput,
+            },
+            data() {
+              return {
+                validationStepper: [
+                  { icon: "folder", far: true, name: "Basic Information" },
+                  { icon: "pencil-alt", name: "Company" },
+                  { icon: "check", name: "Finish" }
+                ],
+                validationOptions: {
+                  stepBtn: {
+                    outline: "pink",
+                    active: "pink",
+                    iconClass: "pink-text"
+                  },
+                  nextBtn: {
+                    outline: "pink"
+                  },
+                  prevBtn: {
+                    outline: "pink"
+                  },
+                  submitBtn: {
+                    color: "success"
+                  },
+                  lineColor: "pink"
+                },
+                validatedSteps: {},
+                form: [
+                  {
+                    name: "",
+                    surname: "",
+                    address: ""
+                  },
+                  {
+                    company: "",
+                    address: ""
+                  },
+                  {
+                    condition: false
+                  }
+                ],
+              }
+            },
+            methods: {
+              checkForm(form) {
+                return (
+                  Object.keys(form).length ===
+                  Object.keys(form).filter(key => form[key].length > 0).length
+                );
+              },
+              validate(step) {
+                this.$refs[`form${step}`].classList.add("was-validated");
+
+                if (step === 3) {
+                  this.validatedSteps[step] = this.form[step - 1].condition;
+                } else if (this.checkForm(this.form[step - 1])) {
+                  this.validatedSteps[step] = true;
+                } else {
+                  this.validatedSteps[step] = false;
+                }
+              },
+              submit() {
+                this.validate(3);
+                if (this.validatedSteps[3]) {
+                  console.log("submited!");
+                }
+              },
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Horizontal Validation-->
+
+<hr class="my-5">
+
+<!--Section: Vertical Stepper-->
+
+<section id="vertical">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Vertical Stepper</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description">To change stepper's orientation to vertical, set <code>vertical</code> property to <code>true</code></p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="vertical-stepper"><vertical-stepper></vertical-stepper></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+            <mdb-stepper vertical buttons :steps="registrationStepper" :options="options">
+              <template #1>
+                <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Basic Information</strong>
+                </h3>
+                <mdb-input label="Email" />
+                <mdb-input label="Username" />
+                <mdb-input label="Password" />
+                <mdb-input label="Repeat Password" />
+              </template>
+              <template #2>
+                <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Personal Data</strong>
+                </h3>
+                <mdb-input label="First Name" />
+                <mdb-input label="Second Name" />
+                <mdb-input label="Surname" />
+                <mdb-input type="textarea" label="Address" />
+              </template>
+              <template #3>
+                <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Terms and conditions</strong>
+                </h3>
+                <mdb-input
+                  type="checkbox"
+                  id="checkbox1"
+                  label="I agree to the terms and conditions"
+                />
+                <mdb-input type="checkbox" id="checkbox2" label="I want to receive newsletter" />
+              </template>
+              <template #4>
+                <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Finish</strong>
+                </h3>
+                <h2 class="text-center font-weight-bold my-4">Registration completed!</h2>
+              </template>
+            </mdb-stepper>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import {
+            mdbStepper,
+            mdbInput
+          } from "mdbvue";
+
+          export default {
+            components: {
+              mdbStepper,
+              mdbInput,
+            },
+            data() {
+              return {
+                registrationStepper: [
+                  { icon: "folder", far: true, name: "Basic Information" },
+                  { icon: "pencil-alt", name: "Personal Data" },
+                  { icon: "image", far: true, name: "Terms and Conditions" },
+                  { icon: "check", name: "Finish" }
+                ],
+                options: {
+                  stepBtn: { color: "info", active: "amber", iconClass: "white-text" },
+                  nextBtn: { outline: "info", icon: "chevron-right" },
+                  prevBtn: { outline: "info", icon: "chevron-left" },
+                  submitBtn: { color: "amber", icon: "check" },
+                  lineColor: "amber"
+                },
+              }
+            },
+            methods: {
+              submit() {
+                console.log('submitted');
+              }
+            }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Vertical Stepper-->
+
+<hr class="my-5">
+
+<!--Section: Stepper within-->
+
+<section id="within">
+    <!--Title-->
+  <h2 class="section-heading"><strong>Stepper within form</strong> <a href="https://mdbootstrap.com/products/vue-ui-kit/"
+    target="_blank" class="btn btn-danger btn-md" role="button">MDB Pro component <i class="far fa-gem ml-1"></i></a></h2>
+
+  <!--Description-->
+  <p class="description"></p>
+
+  <!--Section: Live preview-->
+  <section class="mb-5 mt-5">
+    <div id="within-stepper"><within-stepper></within-stepper></div>
+  </section>
+  <!--Section: Live preview-->
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+      <code data-lang="html" data-name="template">
+        <template>
+          <mdb-card class="m-5 p-5">
+            <mdb-card-body>
+              <h2 class="text-center font-weight-bold pt-4 pb-5">
+                <strong>Steps form example</strong>
+              </h2>
+              <mdb-stepper within buttons :steps="3">
+                <template #1>
+                  <h3 class="font-weight-bold pl-0 my-4">
+                    <strong>Step 1</strong>
+                  </h3>
+                  <mdb-input label="First Name" />
+                  <mdb-input label="Second Name" />
+                  <mdb-input type="textarea" label="Address" />
+                </template>
+                <template #2>
+                  <h3 class="font-weight-bold pl-0 my-4">
+                    <strong>Step 2</strong>
+                  </h3>
+                  <mdb-input label="Company Name" />
+                  <mdb-input label="Company Addresws" />
+                  <mdb-input type="textarea" label="Address" />
+                </template>
+                <template #3>
+                  <h3 class="font-weight-bold pl-0 my-4">
+                    <strong>Step 3</strong>
+                  </h3>
+                </template>
+              </mdb-stepper>
+            </mdb-card-body>
+          </mdb-card>
+        </template>
+      </code>
+      <code data-lang="html" data-name="script">
+        <script>
+          import {
+            mdbStepper,
+            mdbInput,
+            mdbCard,
+            mdbCardBody
+          } from "mdbvue";
+
+          export default {
+            components: {
+            mdbStepper,
+            mdbInput,
+            mdbCard,
+            mdbCardBody
+          }
+          };
+        </script>
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--/Section: Code-->
+</section>
+
+<!--Section: Stepper within-->

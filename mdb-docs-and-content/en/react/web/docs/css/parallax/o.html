@@ -1,0 +1,730 @@
+<!--Section: Intro-->
+<section id="introduction">
+
+  <!--Title-->
+  <h2 class="primary-heading">React Parallax<a href="https://mdbootstrap.com/products/react-ui-kit/" target="_blank" class="btn btn-danger btn-sm"
+    role="button">MDB Pro component
+    <i class="far fa-gem ml-1"></i>
+  </a></h2>
+  <h1 class="secondary-heading mb-4">React Parallax - Bootstrap 4 & Material Design</h1>
+
+
+  <h2 class="section-heading mb-4">Overview</h2>
+
+  <hr class="my-5">
+  <!--Description-->
+  <p>Bootstrap parallax is a design effect visible while scrolling down - background image is moving with a different speed than the foreground content.</p>
+
+  <hr class="mt-4 mb-5">
+
+  <section id='installation'>
+  <blockquote class="blockquote bq-danger">
+    <p class="bq-title">Required external library</p>
+    <p>Since MDBReact <code>4.25.0</code> version this functionality requires the installation of an external library - <code>jarallax</code>.</p>
+  <p>To make the Parallax component easier to use after changes, we've created a special component <code>MDBParallaxWrapper</code> that you should copy into your project and use it exactly as the Parallax component before version <code>4.25.0</code>.</p>
+
+
+      <p>Install it with the following command, then configure it as follows:</p>
+
+      <ol>
+      <li>
+        <code data-lang="js" data-name="installation">
+            npm install jarallax --save
+        </code>
+      </li>
+      <li>Create <code>MDBParallaxWrapper</code> component into your project folder and paste code from below.</li>
+      <li>Add <code>MDBParallaxWrapper</code> import to page where you want to use <code>MDBParallax</code></li>
+      <li>Use exactly the same like MDBParallax component before <code>4.25.0</code> version.</li>
+    </ol>
+  </blockquote>
+
+    <h2 class="section-heading">
+      MDBParallaxWrapper component:  </h2>
+
+  <!--Subtitle-->
+  <p> Please create new component and phase to it a code below.</p>
+
+    <mdbsnippet>
+
+      <code data-lang="html" data-name="MDBParallaxWrapper">
+        import React, { Component } from 'react';
+        import PropTypes from 'prop-types';
+        import { jarallax, jarallaxVideo, jarallaxElement } from 'jarallax';
+        import { MDBParallax } from 'mdbreact';
+
+        class MDBParallaxWrapper extends Component {
+          jarallax = React.createRef();
+
+          componentDidMount() {
+            const {
+              image,
+              video,
+              element,
+              elementOptions,
+              disableParallax,
+              disableVideo,
+              disableVideoLazyLoading,
+              disableVideoLoop,
+              disableVideoPlayOnlyVisible,
+              elementInViewport,
+              imgElement,
+              imgPosition,
+              imgRepeat,
+              imgSize,
+              imgSrc,
+              videoEndTime,
+              videoStartTime,
+              videoVolume,
+              zIndex
+            } = this.props;
+
+            const imageOptions = {
+              disableParallax,
+              elementInViewport,
+              imgElement,
+              imgPosition,
+              imgRepeat,
+              imgSize,
+              imgSrc,
+              zIndex
+            };
+
+            const videoOptions = {
+              disableVideo,
+              videoEndTime,
+              videoLazyLoading: !disableVideoLazyLoading,
+              videoLoop: !disableVideoLoop,
+              videoPlayOnlyVisible: !disableVideoPlayOnlyVisible,
+              videoStartTime,
+              videoVolume
+            };
+
+            jarallax(
+              this.jarallax.current,
+              image
+                ? imageOptions
+                : video
+                ? videoOptions
+                : element
+                ? elementOptions
+                : null
+            );
+
+            jarallaxVideo(this.jarallax.current);
+            jarallaxElement(this.jarallax.current);
+          }
+
+          componentWillUnmount() {
+            jarallax(this.jarallax.current, 'destroy');
+          }
+
+          render() {
+            const {
+              alt,
+              children,
+              className,
+              element,
+              image,
+              keepImg,
+              speed,
+              tag: Tag,
+              threshold,
+              type,
+              video,
+              height,
+              width,
+              ...attributes
+            } = this.props;
+
+            return (
+              <MDBParallax
+                alt={alt}
+                className={className}
+                element={element}
+                height={height}
+                image={image}
+                keepImg={keepImg}
+                ref={this.jarallax}
+                speed={speed}
+                tag={Tag}
+                threshold={threshold}
+                type={type}
+                video={video}
+                width={width}
+                {...attributes}
+              >
+                {children}
+              </MDBParallax>
+            );
+          }
+        }
+
+        MDBParallaxWrapper.propTypes = {
+          alt: PropTypes.string.isRequired,
+          className: PropTypes.string,
+          disableParallax: PropTypes.func,
+          disableVideo: PropTypes.func,
+          elementInViewport: PropTypes.node,
+          height: PropTypes.string,
+          image: PropTypes.string,
+          imgElement: PropTypes.string,
+          imgPosition: PropTypes.string,
+          imgRepeat: PropTypes.string,
+          imgSize: PropTypes.string,
+          keepImg: PropTypes.bool,
+          speed: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+          tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+          threshold: PropTypes.node,
+          type: PropTypes.string,
+          video: PropTypes.string,
+          videoEndTime: PropTypes.number,
+          videoLazyLoading: PropTypes.bool,
+          videoLoop: PropTypes.bool,
+          videoPlayOnlyVisible: PropTypes.bool,
+          videoStartTime: PropTypes.number,
+          videoVolume: PropTypes.number,
+          width: PropTypes.string,
+          zIndex: PropTypes.number
+        };
+
+        MDBParallaxWrapper.defaultProps = {
+          alt: 'MDBParallax image',
+          disableParallax: null,
+          disableVideo: null,
+          elementInViewport: null,
+          height: '600px',
+          imgElement: '.jarallax-img',
+          imgPosition: '50% 50%',
+          imgRepeat: 'no-repeat',
+          imgSize: 'cover',
+          keepImg: false,
+          speed: 0.5,
+          tag: 'div',
+          threshold: 'null null',
+          type: 'scroll',
+          videoEndTime: 0,
+          videoLazyLoading: true,
+          videoLoop: true,
+          videoPlayOnlyVisible: true,
+          videoStartTime: 0,
+          videoVolume: 0,
+          width: '100%',
+          zIndex: -100
+        };
+
+        export default MDBParallaxWrapper;
+
+      </code>
+    </mdbsnippet>
+
+    <h2 class="section-heading">
+      ParallaxWrapper import.</h2>
+
+        <!--Subtitle-->
+    <p> Please import <code>MDBParallaxWrapper</code> component to file where you want to use <code>MDBParallax</code>.</p>
+
+
+   <mdbsnippet>
+
+        <code data-lang="html" data-name="import">
+           import MDBParallaxWrapper from './MDBParallaxWrapper';
+        </code>
+      </mdbsnippet>
+
+
+</section>
+
+</section>
+<!--/Section: Intro-->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="basic">
+
+  <!--Title-->
+  <h2 class="section-heading">
+    Basic structure
+  </h2>
+
+  <!--Subtitle-->
+  <p></p>
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+
+      <code data-lang="html" data-name="JS">
+
+          import React, { Component } from 'react';
+          import MDBParallaxWrapper from './MDBParallaxWrapper';
+
+          class Parallax extends Component {
+            render() {
+              return (
+                <>
+                  <div style={{ height: '60vh' }}></div>
+                  <MDBParallaxWrapper
+                    image='https://mdbootstrap.com/img/Photos/Others/img%20%2844%29.jpg'
+                    speed='0.8'
+                  />
+                  <div style={{ height: '60vh' }}></div>
+                </>
+              );
+            }
+          }
+
+          export default Parallax;
+
+
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--Section: Code-->
+
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="parallax-styles">
+
+  <!--Title-->
+  <h2 class="section-heading">
+    Different types of parallax effects.
+  </h2>
+
+  <!--Subtitle-->
+  <p>You can use one of 5 different parallax effects including :
+    <code>scroll, scale, opacity, scroll-opacity, scale-opacity</code>
+  </p>
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+
+      <code data-lang="html" data-name="JS">
+
+          import React, { Component } from 'react';
+          import MDBParallaxWrapper from './MDBParallaxWrapper';
+
+          class Parallax extends Component {
+            render() {
+              return (
+                <>
+          <div className='container'>
+              <div className='row'>
+                <div className='col-md-12 text-center'>
+                  <h2 className='h1 font-weight-bold my-5 py-4'>
+                    Different MDBParallax effects
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <MDBParallaxWrapper
+              image='https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(19).jpg'
+              speed={0.5}
+              height='50vh'
+              type='scale'
+            />
+            <MDBParallaxWrapper
+              image='https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(18).jpg'
+              speed={2}
+              height='50vh'
+              type='opacity'
+            />
+            <MDBParallaxWrapper
+              image='https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(20).jpg'
+              speed={0.2}
+              height='50vh'
+              type='scroll-opacity'
+            />
+            <MDBParallaxWrapper
+              image='https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(57).jpg'
+              speed={0.2}
+              height='50vh'
+              type='scale-opacity'
+            />
+            </>
+            );
+          }
+        }
+
+        export default Parallax;
+
+      </code>
+
+    </mdbsnippet>
+  </section>
+  <!--Section: Code-->
+
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="parallax-video">
+
+<!--Title-->
+  <h2 class="section-heading">
+    Parallax with <code>video</code> props.
+  </h2>
+
+  <!--Subtitle-->
+  <p>Background Video Usage Example. For local videos required only 1 video type, not necessary use all mp4, webm and ogv. This need only for maximum compatibility with all browsers.</p>
+
+  <!--Section: Code-->
+  <section>
+    <mdbsnippet>
+
+      <code data-lang="html" data-name="JS">
+
+          import React, { Component } from 'react';
+          import MDBParallaxWrapper from './MDBParallaxWrapper';
+
+          class Parallax extends Component {
+            render() {
+              return (
+                <>
+                  <div className='container'>
+                    <div className='row my-5 py-4'>
+                      <div className='col-md-12 text-center'>
+                        <MDBParallax
+                          image='https://mdbootstrap.com/img/Photos/Others/img%20%2844%29.jpg'
+                          speed='0.8'
+                        />
+                        <p align='justify'>
+                          Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis
+                          commodi porro, cumque provident rem corporis odit, ut quas
+                          dolores maxime nesciunt possimus quis, soluta velit debitis
+                          amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit
+                          amet, consectetur quis elit. Perspiciatis commodi porro, cumque
+                          provident rem corporis odit, ut quas dolores maxime nesciunt
+                          possimus quis, soluta velit debitis amet, veritatis cupiditate
+                          reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                          Perspiciatis commodi porro, cumque provident rem corporis odit,
+                          ut quas dolores maxime nesciunt possimus quis, soluta velit
+                          debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                          dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                          porro, cumque provident rem corporis odit, ut quas dolores
+                          maxime nesciunt possimus quis, soluta velit debitis amet,
+                          veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                          consectetur quis elit. Perspiciatis commodi porro, cumque
+                          provident rem corporis odit, ut quas dolores maxime nesciunt
+                          possimus quis, soluta velit debitis amet, veritatis cupiditate
+                          reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                          Perspiciatis commodi porro, cumque provident rem corporis odit,
+                          ut quas dolores maxime nesciunt possimus quis, soluta velit
+                          debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                          dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                          porro, cumque provident rem corporis odit, ut quas dolores
+                          maxime nesciunt possimus quis, soluta velit debitis amet,
+                          veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                          consectetur quis elit. Perspiciatis commodi porro, cumque
+                          provident rem corporis odit, ut quas dolores maxime.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <MDBParallaxWrapper
+                    video='https://player.vimeo.com/video/137857207'
+                    type='scroll-opacity'
+                    speed='0.1'
+                    disableVideoLazyLoading
+                  />
+                  <MDBParallaxWrapper
+                    className='jarallax'
+                    video='https://youtu.be/lugard7P0nw'
+                    disableVideoLazyLoading
+                  />
+                  <div className='container'>
+                    <div className='row my-5 py-4'>
+                      <div className='col-md-12 text-center'>
+                        <p align='justify'>
+                          Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis
+                          commodi porro, cumque provident rem corporis odit, ut quas
+                          dolores maxime nesciunt possimus quis, soluta velit debitis
+                          amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit
+                          amet, consectetur quis elit. Perspiciatis commodi porro, cumque
+                          provident rem corporis odit, ut quas dolores maxime nesciunt
+                          possimus quis, soluta velit debitis amet, veritatis cupiditate
+                          reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                          Perspiciatis commodi porro, cumque provident rem corporis odit,
+                          ut quas dolores maxime nesciunt possimus quis, soluta velit
+                          debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                          dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                          porro, cumque provident rem corporis odit, ut quas dolores
+                          maxime nesciunt possimus quis, soluta velit debitis amet,
+                          veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                          consectetur quis elit. Perspiciatis commodi porro, cumque
+                          provident rem corporis odit, ut quas dolores maxime nesciunt
+                          possimus quis, soluta velit debitis amet, veritatis cupiditate
+                          reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                          Perspiciatis commodi porro, cumque provident rem corporis odit,
+                          ut quas dolores maxime nesciunt possimus quis, soluta velit
+                          debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                          dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                          porro, cumque provident rem corporis odit, ut quas dolores
+                          maxime nesciunt possimus quis, soluta velit debitis amet,
+                          veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                          consectetur quis elit. Perspiciatis commodi porro, cumque
+                          provident rem corporis odit, ut quas dolores maxime.
+                        </p>
+                        <div style={{ height: '60vh' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            }
+          }
+
+          export default Parallax;
+
+      </code>
+    </mdbsnippet>
+  </section>
+  <!--Section: Code-->
+
+</section>
+<!--/Section: -->
+
+<hr class="my-5">
+
+<!--Section: -->
+<section id="parallax-elements">
+
+    <!--Title-->
+    <h2 class="section-heading">
+        Any Element Parallax Usage Example
+    </h2>
+
+    <!--Subtitle-->
+    <p><code>element</code> props allows you to use parallax component in any type of element.
+    </p>
+    <p><i>Note: this is more like experimental feature, so the behavior could be changed in the future releases.
+      </i></p>
+
+    <!--Section: Code-->
+    <section>
+      <mdbsnippet>
+
+        <code data-lang="html" data-name="JS">
+
+            import React, { Component } from 'react';
+            import MDBParallaxWrapper from './MDBParallaxWrapper';
+
+            class Parallax extends Component {
+              render() {
+                return (
+                  <>
+                    <div className='container'>
+                      <div className='row my-5 py-4'>
+                        <div className='col-md-12 text-center'>
+                          <p align='justify'>
+                            Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis
+                            commodi porro, cumque provident rem corporis odit, ut quas
+                            dolores maxime nesciunt possimus quis, soluta velit debitis
+                            amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit
+                            amet, consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime.
+                          </p>
+                          <p className='mb-0' align='justify'>
+                            Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis
+                            commodi porro, cumque provident rem corporis odit, ut quas
+                            dolores maxime nesciunt possimus quis, soluta velit debitis
+                            amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit
+                            amet, consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className='container'>
+                      <div className='row'>
+                        <div className='col-md-12 text-center overflow-hidden'>
+                          <h2 className='h1 font-weight-bold cyan-text my-5 py-4'>
+                            <MDBParallaxWrapper tag='span' speed='0' element>
+                              P
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='80' element>
+                              a
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='-30' element>
+                              r
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='180' element>
+                              a
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='-50' element>
+                              l
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='120' element>
+                              l
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='-25' element>
+                              a
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='60' element>
+                              x
+                            </MDBParallaxWrapper>
+                            &nbsp;
+                            <MDBParallaxWrapper tag='span' speed='-50' element>
+                              E
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='110' element>
+                              l
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='-160' element>
+                              e
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='60' element>
+                              m
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='-240' element>
+                              e
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='30' element>
+                              n
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='-170' element>
+                              t
+                            </MDBParallaxWrapper>
+                            <MDBParallaxWrapper tag='span' speed='0' element>
+                              s
+                            </MDBParallaxWrapper>
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className='container'>
+                      <div className='row my-5 py-4'>
+                        <div className='col-md-12 text-center'>
+                          <p align='justify'>
+                            Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis
+                            commodi porro, cumque provident rem corporis odit, ut quas
+                            dolores maxime nesciunt possimus quis, soluta velit debitis
+                            amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit
+                            amet, consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime.
+                          </p>
+                          <p className='mb-0' align='justify'>
+                            Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis
+                            commodi porro, cumque provident rem corporis odit, ut quas
+                            dolores maxime nesciunt possimus quis, soluta velit debitis
+                            amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit
+                            amet, consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime nesciunt
+                            possimus quis, soluta velit debitis amet, veritatis cupiditate
+                            reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit.
+                            Perspiciatis commodi porro, cumque provident rem corporis odit,
+                            ut quas dolores maxime nesciunt possimus quis, soluta velit
+                            debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum
+                            dolor sit amet, consectetur quis elit. Perspiciatis commodi
+                            porro, cumque provident rem corporis odit, ut quas dolores
+                            maxime nesciunt possimus quis, soluta velit debitis amet,
+                            veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet,
+                            consectetur quis elit. Perspiciatis commodi porro, cumque
+                            provident rem corporis odit, ut quas dolores maxime.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                );
+              }
+            }
+
+            export default Parallax;
+
+
+        </code>
+
+      </mdbsnippet>
+    </section>
+    <!--Section: Code-->
+
+  </section>
+  <!--/Section: -->

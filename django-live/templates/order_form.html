@@ -1,0 +1,32 @@
+<!-- Inherit from index -->
+{% extends 'index.html' %}
+<!-- Load the static files -->
+{% load static %}
+
+<!-- Home Title -->
+{% block title %}
+    Order
+{% endblock %}
+
+<!-- Body -->
+{% block content %}
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-header">
+                <h5>Customer: <u><em>{{customer.name}}</em></u></h5>
+            </div>
+            <div class="card card-body">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+
+                    {% for form in formset %}
+                        {{form}}
+                        <hr>
+                    {% endfor%}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

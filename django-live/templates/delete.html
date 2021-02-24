@@ -1,0 +1,25 @@
+<!-- Inherit from index -->
+{% extends 'index.html' %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Home Title -->
+{% block title %}
+    Delete
+{% endblock %}
+
+<!-- Body -->
+{% block content %}
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <form method="POST" action="{% url 'delete_order' order.id %}">
+                    {% csrf_token %}
+
+                    <p>Are you sure you want to delete "<strong><em>{{order}}</em></strong>"</p>
+                    <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+                    <input class="btn btn-danger" type="submit" value="Confirm">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
